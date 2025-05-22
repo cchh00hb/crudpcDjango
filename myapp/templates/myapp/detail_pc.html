@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>{{ pc.nom }}</h2>
+<h3>Composants :</h3>
+<ul>
+    {% for composant in composants %}
+        <li>{{ composant.nom }} - {{ composant.type }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'ajouter_composant' pc.id %}">Ajouter un composant</a>
+<a href="{% url 'liste_pcs' %}">Retour</a>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Liste des PC</h1>
+<a href="{% url 'ajouter_pc' %}">Ajouter un PC</a>
+<ul>
+    {% for pc in pcs %}
+        <li>
+            <a href="{% url 'detail_pc' pc.id %}">{{ pc.nom }}</a> -
+            <a href="{% url 'modifier_pc' pc.id %}">Modifier</a> -
+            <a href="{% url 'supprimer_pc' pc.id %}">Supprimer</a>
+        </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
