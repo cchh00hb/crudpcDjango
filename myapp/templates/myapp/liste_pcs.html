@@ -1,22 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'myapp/base.html' %}
 
-<h1>Liste des PC</h1>
-<a href="{% url 'ajouter_pc' %}">Ajouter un PC</a>
-<ul>
-    {% for pc in pcs %}
-        <li>
-            <a href="{% url 'detail_pc' pc.id %}">{{ pc.nom }}</a> -
-            <a href="{% url 'modifier_pc' pc.id %}">Modifier</a> -
-            <a href="{% url 'supprimer_pc' pc.id %}">Supprimer</a>
-        </li>
-    {% endfor %}
-</ul>
+{% block content %}
+<a href="{% url 'ajouter_pc' %}" class="btn btn-success mb-3">Ajouter un PC</a>
 
-</body>
-</html>
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Nom du PC</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pc in pcs %}
+        <tr>
+            <td><a href="{% url 'detail_pc' pc.id %}">{{ pc.nom }}</a></td>
+            <td>
+                <a href="{% url 'modifier_pc' pc.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                <a href="{% url 'supprimer_pc' pc.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

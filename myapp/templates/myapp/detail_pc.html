@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'myapp/base.html' %}
 
-<h2>{{ pc.nom }}</h2>
-<h3>Composants :</h3>
-<ul>
+{% block content %}
+<h2 class="mb-4">{{ pc.nom }}</h2>
+
+<h4>Composants :</h4>
+<ul class="list-group mb-3">
     {% for composant in composants %}
-        <li>{{ composant.nom }} - {{ composant.type }}</li>
+        <li class="list-group-item">
+            <strong>{{ composant.nom }}</strong> — {{ composant.type }}
+        </li>
+    {% empty %}
+        <li class="list-group-item">Aucun composant enregistré.</li>
     {% endfor %}
 </ul>
-<a href="{% url 'ajouter_composant' pc.id %}">Ajouter un composant</a>
-<a href="{% url 'liste_pcs' %}">Retour</a>
 
-</body>
-</html>
+<a href="{% url 'ajouter_composant' pc.id %}" class="btn btn-primary">Ajouter un composant</a>
+<a href="{% url 'liste_pcs' %}" class="btn btn-secondary">Retour à la liste</a>
+{% endblock %}

@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'myapp/base.html' %}
 
-<h2>Formulaire PC</h2>
-<form method="post">
+{% block content %}
+<h2 class="mb-4">Formulaire PC</h2>
+
+<form method="post" class="card card-body shadow-sm">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Enregistrer</button>
+    <button type="submit" class="btn btn-success">Enregistrer</button>
+    <a href="{% url 'liste_pcs' %}" class="btn btn-secondary">Annuler</a>
 </form>
-<a href="{% url 'liste_pcs' %}">Retour</a>
-
-</body>
-</html>
+{% endblock %}
