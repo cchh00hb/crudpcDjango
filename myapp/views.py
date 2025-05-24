@@ -52,3 +52,5 @@ def ajouter_composant(request, pc_id):
     else:
         form = ComposantForm()
     return render(request, 'myapp/form_composant.html', {'form': form, 'pc': pc})
+def accueil(request):
+    return render(request, 'myapp/accueil.html')
