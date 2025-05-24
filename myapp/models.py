@@ -12,7 +12,7 @@ class PC(models.Model):
 
 class Composant(models.Model):
     pc = models.ForeignKey(PC, on_delete=models.CASCADE, related_name='composants')
-    nom = models.CharField(max_length=100)
+    nom = models.CharField(max_length=300)
     type = models.CharField(max_length=50)
 
     def __str__(self):
